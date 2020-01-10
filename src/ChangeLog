@@ -1,0 +1,590 @@
+2014-02-10  David Tardon  <dtardon@redhat.com>  [47057a7fdce703813f41223d908237a180b75b57]
+
+	prepare for a new release
+
+	Change-Id: I387df9a26538bf37248cb2f8a1a1c083e9628b1d
+
+2014-02-07  David Tardon  <dtardon@redhat.com>  [b4c2bd396d73204a46cf084bc444d254949920ae]
+
+	CID#1165311 missing break
+
+	There is no need to set ret if we are going to return immediately
+	anyway.
+
+	Change-Id: I390a4f67c907d75c554673f976b952e1008c94ae
+	(cherry picked from commit f16e6cf59bdc681d410cd356e4eff89abd98e372)
+
+2014-02-07  David Tardon  <dtardon@redhat.com>  [ed285b772d124ef9a900f9fd9f53a9b72fdb34de]
+
+	add myself to contributors
+
+	Change-Id: I8fea4c66e58690ef808b8ae48bcb1e3186deb07d
+	(cherry picked from commit f3723f79a20de230b3159b8d73debb567bb520f4)
+
+2014-01-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d6fcd4af658079dd6399559a0603b9c356b61197]
+
+	Ignore cells if not inside the <table></table> tags
+
+	Change-Id: I5dfc2d05a6191f9cbf97d300a9ca1624b40e21e9
+	(cherry picked from commit 1b941a8b1e2aa1909c1f6a0d2c8aeeb04f8ec4b2)
+
+2014-01-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1d98978ccd026b4e2372faf3a373682a1a96605b]
+
+	std::string constructor with null string might crash in some cases
+
+	Change-Id: Ie692ffbece7235fe32abf46e84d4f2a29442e96f
+	(cherry picked from commit 393f2b5bb8bbb802526771baf1087725cf920452)
+
+2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [095b595a81cc18f3f16960c202079d2e961d1634]
+
+	Put as much as you can into the try block
+
+	Change-Id: Id9c4193228bc7af7da685edb0db07c91f6c8de24
+
+2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e68f8f29ec365cc07edf6f1b1dc15c7f75f40051]
+
+	All invocation of xmlReaderForStream use the same options
+
+	Change-Id: I6f61c92db22114e3592cd5d24516bcd879422566
+
+2014-01-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2b21394e42767ece602741538e485c2ec3cb5c85]
+
+	No need to use the stuff from inttypes here
+
+	Change-Id: Ia8087ed0b18c8ed12ec75d272bf8f409038f33b0
+
+2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [54c72c4e27dc26bb74473f2fccaa5dcf9dba01d7]
+
+	Strip first tab in a list text
+
+	Change-Id: I46a4d0f36b2d255a30c669f24dabe65852c35d61
+
+2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b0a20439bd67fae0fb1aeb71909e7c48f4ab6979]
+
+	Bump version
+
+	Change-Id: I10e27439fc33587a16411bb29fe268ed9ca60de8
+
+2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9817ef41ad922387d56a0a8c5abb862977f33dea]
+
+	Some NEWS
+
+	Change-Id: I47e4a37628da83d467bbe757efe6f336b30cbe32
+
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [87ebca42ee32d9953af77d939cbbf527d885ce82]
+
+	Some Fridrich less
+
+	Change-Id: Ic1b972d90b0d4fb76aa294190eaa1014d68b17ca
+
+2014-01-14  David Tardon  <dtardon@redhat.com>  [48be70f4563514fbdae1880cff1eec6345a9a9dd]
+
+	add git-review setup
+
+	Change-Id: Ifcf4a5e6868d9572397bbf7b6a16899e200cd617
+	(cherry picked from commit 387f0c76bfa22db281145bdaef735500d1645e1b)
+
+2014-01-14  David Tardon  <dtardon@redhat.com>  [2341d1d9dbdd230523f7885baeb0c5e85bfd41ea]
+
+	set git hooks automatically
+
+
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d04605a6e7c9179686714bb3d9f5178f90584166]
+
+	Support also compressed zabw documents
+
+
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [cbb494786a057a01756f57086043500a0eee4643]
+
+	libwpd:mime-type -> libwpd:mimetype
+
+
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e1f26cd3d85b78d008004f7cf4f08e564d0c5d3e]
+
+	The left position of the list is already factored into the open*ListLevel
+
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d2147985f4e1eb13e6b52a33511c9154632a4b38]
+
+	Fix a silly with footnotes and endnotes
+
+	(cherry picked from commit 964e40650dfb714f9c628b89e2f390b287a4e9c6)
+
+	Conflicts:
+		src/lib/ABWParser.cpp
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ce6c5a536ae05b855fee08dc8213d586a852f6cd]
+
+	Make LO build easier
+
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a70b8584d2fea1d6e309ef7e4f6711cb217b7388]
+
+	It seems that AbiWord gets the real number of columns in the table this way
+
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c0437e7a7d6d3e1118158cbece01c12dfe2ed023]
+
+	libwpd:occurence was misspelled in libwpd-0.9
+
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [357cf9d824e91ec2d4a8b23928720f1ca8ae00eb]
+
+	Write dummy list levels when a list starts with level bigger then 1
+
+
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b7ee83b98d13bef7bf8ed75412d551db4d96b7e0]
+
+	More robust list handling
+
+
+2014-01-12  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ffdf5c6aa4071bf1a39e2d2ad41a33a53370853a]
+
+	Fix handling of para margin-bottom
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e1f6c44898b49f24226c3f71fb63b5b921cf2cbd]
+
+	Belts and braces (more elegant solution)
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0ee61eb05c8500cf1ff31470d54265427275b441]
+
+	Fix some crash + make the base64 decoding a bit more sane
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f5074918f70bbee286863e9b867f9fa6184cf3fc]
+
+	Fixing the libwpd-0.9 logic of lists
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [68bd57982af38ad1beab0f074201c21b7b1cf68b]
+
+	Port back to libwpd-0.9
+
+
+2014-01-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [2c081e895cb4b62e8f2c658f2b20d66adc0ed382]
+
+	Spelling fixes
+
+
+2014-01-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [fc61bae62b0283422ab5fcd71163a612108f11fe]
+
+	Initial list support for ABW documents
+
+
+2014-01-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1a595ca12f1da21a97becb3360e88ec1f52a2c92]
+
+	Some more progress towards list elements
+
+
+2013-12-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [15e783bf6478b9adf098adf8f15e87817c0955f7]
+
+	Undefined symbol
+
+
+2013-12-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f4e2519dbc2fb86d5d59b163333759237ec7058a]
+
+	Some stubs, constness and avoiding some RTTI later
+
+
+2013-12-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [355b19ba1336eba76a19a3907330e9e9baa8613e]
+
+	Determine the shape of a list level in first pass
+
+
+2013-12-24  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [adba1cf7e539841c8af67a5a646a5acca9026777]
+
+	Some more work towards the list support
+
+
+2013-12-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7a1ca0f834af90fd0dbf84dbf7d0ff3351bf2da5]
+
+	Some more code towards proper list handling
+
+
+2013-12-22  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5b1ac3340970946c1a78ea8d96fc8a5ec485b9f6]
+
+	Keep the list styles somewhere
+
+	Still leaking, but this is not the final act
+
+2013-12-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [94bb7b6dbb7ab98b1edd406f9d13e944ad9a3035]
+
+	Types to hold list levels
+
+
+2013-12-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [93acb81588ab36abc15718e3ecc8d5769c3fb71d]
+
+	Read "l" elements
+
+
+2013-12-18  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [42d2fef2b35f67826b443753aac6d95e17f7c2c0]
+
+	Export only needed stuff on Windows
+
+
+2013-12-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d98b8cab12fe3451cb22826ebfe98f5c408c3ff7]
+
+	Some cosmetical changes
+
+
+2013-12-12  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b6486a49dd5328cae4ece238620495908c30710d]
+
+	Add the styles of under and overlines
+
+
+2013-12-12  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e69d2dfc47ece4843b200672d5ac0924d4183fea]
+
+	Adapt to changes in the RVNGTextInterface
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ee732654ed5ac11bda3dd8d55b8e59ed1627154d]
+
+	Since we are only appending and then iterating over it sequencially, use std::list
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0d6450578d4828f751699de0dd219b9596d41039]
+
+	Make the column/tabstops parsers more robust
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7fca747512368388c8b4b6f684b98c44cce8b7f2]
+
+	Extension "inch" was seen in the wild
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b3e7e1ac5609d6e72b7352a1a047e11c4641ffee]
+
+	Header/Footer support
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [78955e70fe2a0e0b7ceec3bc496f70dd4a83dc62]
+
+	Complicate the stuff a bit in order to be able to handle the headers/footers
+
+
+2013-12-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ca68cea2c25fc2a9d2e818215bc0bd13c780760e]
+
+	Allow equal identing of functions
+
+
+2013-12-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8a5cca1e461095f49a8c835426675cfa7d322763]
+
+	Some whitespace for my old eyes
+
+
+2013-12-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6ff2c57e1873e583264e942290c437ebceaf7adf]
+
+	Some work towards supporting the weird abiword headers/footers
+
+
+2013-12-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4c9866bfc342c2c84e4d5b641618a043c304497e]
+
+	Basic ABWOutputElements framework for delaying content output
+
+
+2013-12-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [17fd37292d8fa13f24a17571134c9c59ae2c782e]
+
+	Wrong modelines
+
+
+2013-12-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d110030dc24ff83e94b8378a0d051e7eb1defd5c]
+
+	Circulate, nothing to see here
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [15f0a95d78e3718111836cfada7c6750d8e2303d]
+
+	Handle embedded images in AbiWord files
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7beea24586dc9967b463676520e00492403bffa4]
+
+	Framework for collecting binary data objects
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7d2230e1e403246ee5e8cf75eaacbc1f5d6b7fbd]
+
+	Fix loop with documents ending just after a table
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f7e5dba8839c2169743fee7f3927ddcd80fcedcd]
+
+	Second pass to get some properties of tables without column definitions
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9fd2f3666cf09c1e5b096d157aebf82ed56f4936]
+
+	Set groundwork for 2 passes
+
+
+2013-12-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8c7fe405bff359c8f84f18697f6c7ddd2aeb1bda]
+
+	Trying to handle right the nested tables
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [04cf9ed8327f1fd4ea9f3f6e460b8e655c7d1458]
+
+	Initial import of tables (still nested tables don't work)
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b621d4bc7c57d17e88966d907f4dbf770f119c11]
+
+	Some little robustness refactoring
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [088f9a42951c11c2884bb2ef53d6651737ca95ea]
+
+	Laying ground for support of tables
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e8f5c9a75aea3be19fcca265ffced11f2a4f40c8]
+
+	Tabstops
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f4d4fd885698c7ba73f075331f28a394f7864db8]
+
+	A comment for unsuspecting reader
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a7ec86bd73cee656bd75c62819a665d0cee29df4]
+
+	Avoid constructing std::string from NULL + avoid some superfluous temporaries
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5535638105cf96b3016c4622128c97c4090a125f]
+
+	Small cosmetic changes that only Fridrich could ever make
+
+
+2013-12-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f2c04bdc111617ef9bcd818a48c2f065884d1df7]
+
+	We are spiritual
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [417beae1f78fe5262ac08f4a32b33e2ea0870fe6]
+
+	Slightly shorter version
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [886b93671fff11dea1e5272a2aef6e9510359b16]
+
+	Handle empty elements
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7a16ecfa1f846abcb12221de513b4847f54c5d1b]
+
+	There are abiword documents without the abiword namespace declaration out there
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [835cb01ca9c841dfeec0f0873c0d12a747e58b39]
+
+	Some more simplification
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [81289b340bdb85d7d8f8f2f504b0539c04db3e6b]
+
+	Extract some repetition into a function
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5fc43ee998cf4efa3cfdaea3f3af727b3d00e96d]
+
+	Some improvements
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8e3bee4e99996c8ba317ae4746d8ae01a72e8a31]
+
+	Some refactoring to make the parser more intelligent
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [eb848daf058b7cb59ae51c100c018df0293ff3d0]
+
+	decodeUrl + astyle
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0542cbc4e29bea18513250a5cec26d0e17091960]
+
+	Function to parse the "table-column-props" string
+
+
+2013-12-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [bcf802589e71ff88ad2965fd29cd9abb6d412395]
+
+	writing-mode, orphans, widows
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2012e0dd79545f46462649f10bd18f8cb9b0f0c8]
+
+	These two can be static now
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f54cf903f885e6bcaa7cd84c7a33813e09e0153d]
+
+	Abiword does not balance columns
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7ddf65e2c20dad890cd01fc829ffcdd61ea68551]
+
+	Manual page and column breaks
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [16fa99811515bcd5ea28b765770ad64a01aaa638]
+
+	Parse hyperlinks
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2142f77a04fd20da95650153c02819341879c731]
+
+	Some defaults + scope of validity of properties
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [565dba42244396db1e5e2c67371e980d1e1daaab]
+
+	Span properties
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [edcde16c2e093e23f4ae82dd44faff1599aa8788]
+
+	Output some para properties
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [fbdb5676d46389c4fea670707c5159b7bf087019]
+
+	Output columns
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [479342ca7524f28e6d570b5d9a031d5e185474fa]
+
+	Output rudimental section properties
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8c015f67b280af7cc7f34bfd965d12ec8aee8cec]
+
+	Don't output too many identical page styles
+
+
+2013-12-05  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e52df55a66b6e26837ec1c4ec6b32eafd803ec88]
+
+	Get page margins
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8e522fd2924fdf844a463efa12a074e49df37992]
+
+	Collect styles and handle page size
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0f09bb15b21d597365f13bab97d01689962e04e0]
+
+	split the strings in two passes to cater for badly formed strings
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a72284125452675e4e6e315f20f0a83425d1b16e]
+
+	Stuff the stuff a bit
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3f5f0418a1aa98246084fa60c754e9745c8d61bc]
+
+	adding ABWStyles.cpp/h
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7035ce423533148163b77fda192cd5a62c421d72]
+
+	Generic parser of the props string
+
+
+2013-12-04  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ddaf9a3d210b9c023ab3004b3528fbdc4be6575c]
+
+	Some more parser goodness + helper functions
+
+
+2013-12-03  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7bf2f03824986e2b9495f48d57248a0849265975]
+
+	Some improvements with the text output
+
+
+2013-12-01  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ec11f08e6dbcb53a42580ef65eb5f13bfeba1f37]
+
+	correct namespacing
+
+
+2013-12-01  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [62ef181286334d734d6d877cce6abdf9d8c97c61]
+
+	Let content handle opening and closing of elements
+
+
+2013-12-01  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c51db70f7bd762e05cc2155a3b7d6b1ae18a2afb]
+
+	Some more automatic keeping of the callgraph
+
+
+2013-11-30  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e754d852a5cffa4bd1f1ab54ec75ba4198d1faad]
+
+	Don't bother with constants
+
+
+2013-11-30  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c35c03b8f3f3dc9aaf6855758bfd8c70f5498557]
+
+	Separate tabs from the text stream
+
+
+2013-11-30  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [46e6ad209b039f3a2895e74b6439ebdef428cae0]
+
+	Separate insertSpace
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9e29fc1f000be409fead0f0357de79c60b211f42]
+
+	Removing some stuff that is not necessary
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [81042a2959f7e339ebc908406ff43550ee16e728]
+
+	Spit some primitive text out of abiword documents
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [99ffff90905f4c6f7a8a9b4e0ea60b58aa5d42a8]
+
+	Some more xml-parsing based on the awml.dtd
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f84d26c809970b727dd66452965762c138878401]
+
+	Add all elements from the DTD
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f99cd12e87de9f5ae4449cd39f9e38b677cb3a86]
+
+	Dry-parse the AbiWord xml elements
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6bbd6b3193cf106a4b1edbbde9b5dc577d2f70d4]
+
+	Token map vor AWML tokens
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [cd3a9bf16d69cf074df578b0e3824dca5351aee1]
+
+	Linking with libxml2
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4cc997a9bf7717346d5276448602b5cec6c838ca]
+
+	ABW is xml format, so some xml helper stuff
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ded1b3921734fecbc45d853dc0c2cc1ba6eb9ef8]
+
+	Change astyle stuff to the gerrit version
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9dffbec46cf47ffb52d60ce3c130617eb8dd04db]
+
+	Check for libxml2
+
+
+2013-11-29  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [daa3ecf432d0decf1fdb05703629e94636e393be]
+
+	Initial libabw skeleton
+
