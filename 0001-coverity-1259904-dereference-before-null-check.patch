@@ -1,0 +1,30 @@
+From a65eb81c5e9d9da0548eb9066f9dde77a7328cc3 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Sat, 20 Dec 2014 18:35:36 +0100
+Subject: [PATCH] coverity#1259904 dereference before null check
+
+Change-Id: If53074b31a821b0764acc9e9f1b0f9d7894e2e5e
+---
+ src/lib/ABWParser.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/ABWParser.cpp b/src/lib/ABWParser.cpp
+index cf914bf..426ab54 100644
+--- a/src/lib/ABWParser.cpp
++++ b/src/lib/ABWParser.cpp
+@@ -338,9 +338,11 @@ void libabw::ABWParser::readAbiword(xmlTextReaderPtr reader)
+ void libabw::ABWParser::readM(xmlTextReaderPtr reader)
+ {
+   xmlChar *const key = xmlTextReaderGetAttribute(reader, BAD_CAST("key"));
+-  m_state->m_currentMetadataKey = reinterpret_cast<const char *>(key);
+   if (key)
++  {
++    m_state->m_currentMetadataKey = reinterpret_cast<const char *>(key);
+     xmlFree(key);
++  }
+ }
+ 
+ void libabw::ABWParser::readHistory(xmlTextReaderPtr reader)
+-- 
+2.3.5
+

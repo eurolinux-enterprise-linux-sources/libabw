@@ -7,16 +7,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#include <vector>
-#include <string>
 #include <string.h>
 #include <libxml/xmlIO.h>
 #include <libxml/xmlstring.h>
-#include <libwpd-stream/libwpd-stream.h>
-#include <boost/archive/iterators/binary_from_base64.hpp>
-#include <boost/archive/iterators/remove_whitespace.hpp>
-#include <boost/archive/iterators/transform_width.hpp>
-#include <boost/range/iterator_range.hpp>
+#include <librevenge-stream/librevenge-stream.h>
 #include <boost/spirit/include/classic.hpp>
 #include <boost/algorithm/string.hpp>
 #include "ABWParser.h"
@@ -70,29 +64,26 @@ static bool findBool(const std::string &str, bool &res)
                space_p).full;
 }
 
-void appendFromBase64(WPXBinaryData &data, const char *base64Data)
-{
-  std::string base64String(base64Data);
-  boost::trim(base64String);
-
-  std::string::const_iterator paddingIter = std::find(base64String.begin(), base64String.end(), '=');
-  typedef boost::archive::iterators::transform_width<
-  boost::archive::iterators::binary_from_base64<
-  boost::archive::iterators::remove_whitespace< std::string::const_iterator > >, 8, 6 > base64_decoder;
-
-  std::vector<unsigned char> buffer;
-  std::copy(base64_decoder(base64String.begin()), base64_decoder(paddingIter), std::back_inserter(buffer));
-
-  if (!buffer.empty())
-    data.append(&buffer[0], buffer.size());
-}
-
 } // anonymous namespace
+
+struct ABWParserState
+{
+  ABWParserState();
+
+  bool m_inMetadata;
+  std::string m_currentMetadataKey;
+};
+
+ABWParserState::ABWParserState()
+  : m_inMetadata(false)
+  , m_currentMetadataKey()
+{
+}
 
 } // namespace libabw
 
-libabw::ABWParser::ABWParser(WPXInputStream *input, WPXDocumentInterface *iface)
-  : m_input(input), m_iface(iface), m_collector(0)
+libabw::ABWParser::ABWParser(librevenge::RVNGInputStream *input, librevenge::RVNGTextInterface *iface)
+  : m_input(input), m_iface(iface), m_collector(0), m_state(new ABWParserState())
 {
 }
 
@@ -112,7 +103,7 @@ bool libabw::ABWParser::parse()
     std::map<std::string, ABWData> data;
     ABWStylesCollector stylesCollector(tableSizes, data, listElements);
     m_collector = &stylesCollector;
-    m_input->seek(0, WPX_SEEK_SET);
+    m_input->seek(0, librevenge::RVNG_SEEK_SET);
     if (!processXmlDocument(m_input))
     {
       clearListElements(listElements);
@@ -121,7 +112,7 @@ bool libabw::ABWParser::parse()
 
     ABWContentCollector contentCollector(m_iface, tableSizes, data, listElements);
     m_collector = &contentCollector;
-    m_input->seek(0, WPX_SEEK_SET);
+    m_input->seek(0, librevenge::RVNG_SEEK_SET);
     if (!processXmlDocument(m_input))
     {
       clearListElements(listElements);
@@ -138,7 +129,7 @@ bool libabw::ABWParser::parse()
   }
 }
 
-bool libabw::ABWParser::processXmlDocument(WPXInputStream *input)
+bool libabw::ABWParser::processXmlDocument(librevenge::RVNGInputStream *input)
 {
   if (!input)
     return false;
@@ -173,13 +164,38 @@ void libabw::ABWParser::processXmlNode(xmlTextReaderPtr reader)
   {
     const char *text = (const char *)xmlTextReaderConstValue(reader);
     ABW_DEBUG_MSG(("ABWParser::processXmlNode: text %s\n", text));
-    m_collector->insertText(text);
+    if (m_state->m_inMetadata)
+    {
+      if (m_state->m_currentMetadataKey.empty())
+      {
+        ABW_DEBUG_MSG(("there is no key for metadata entry '%s'\n", text));
+      }
+      else
+      {
+        m_collector->addMetadataEntry(m_state->m_currentMetadataKey.c_str(), text);
+        m_state->m_currentMetadataKey.clear();
+      }
+    }
+    else
+    {
+      m_collector->insertText(text);
+    }
   }
   switch (tokenId)
   {
+  case XML_ABIWORD:
+    if (XML_READER_TYPE_ELEMENT == tokenType)
+      readAbiword(reader);
+    break;
   case XML_METADATA:
     if (XML_READER_TYPE_ELEMENT == tokenType)
-      readMetadata(reader);
+      m_state->m_inMetadata = true;
+    if ((XML_READER_TYPE_END_ELEMENT == tokenType) || (emptyToken > 0))
+      m_state->m_inMetadata = false;
+    break;
+  case XML_M:
+    if (XML_READER_TYPE_ELEMENT == tokenType)
+      readM(reader);
     break;
   case XML_HISTORY:
     if (XML_READER_TYPE_ELEMENT == tokenType)
@@ -310,28 +326,21 @@ int libabw::ABWParser::getElementToken(xmlTextReaderPtr reader)
   return ABWXMLTokenMap::getTokenId(xmlTextReaderConstName(reader));
 }
 
-
-void libabw::ABWParser::readMetadata(xmlTextReaderPtr reader)
+void libabw::ABWParser::readAbiword(xmlTextReaderPtr reader)
 {
-  int ret = 1;
-  int tokenId = XML_TOKEN_INVALID;
-  int tokenType = -1;
-  do
-  {
-    ret = xmlTextReaderRead(reader);
-    tokenId = getElementToken(reader);
-    if (XML_TOKEN_INVALID == tokenId)
-    {
-      ABW_DEBUG_MSG(("ABWParser::readMetadata: unknown token %s\n", xmlTextReaderConstName(reader)));
-    }
-    tokenType = xmlTextReaderNodeType(reader);
-    switch (tokenId)
-    {
-    default:
-      break;
-    }
-  }
-  while ((XML_METADATA != tokenId || XML_READER_TYPE_END_ELEMENT != tokenType) && 1 == ret);
+  xmlChar *const props = xmlTextReaderGetAttribute(reader, BAD_CAST("props"));
+  if (m_collector)
+    m_collector->collectDocumentProperties(reinterpret_cast<const char *>(props));
+  if (props)
+    xmlFree(props);
+}
+
+void libabw::ABWParser::readM(xmlTextReaderPtr reader)
+{
+  xmlChar *const key = xmlTextReaderGetAttribute(reader, BAD_CAST("key"));
+  m_state->m_currentMetadataKey = reinterpret_cast<const char *>(key);
+  if (key)
+    xmlFree(key);
 }
 
 void libabw::ABWParser::readHistory(xmlTextReaderPtr reader)
@@ -508,9 +517,9 @@ void libabw::ABWParser::readD(xmlTextReaderPtr reader)
       const xmlChar *data = xmlTextReaderConstValue(reader);
       if (data)
       {
-        WPXBinaryData binaryData;
+        librevenge::RVNGBinaryData binaryData;
         if (base64)
-          appendFromBase64(binaryData, (const char *)data);
+          binaryData.appendBase64Data((const char *)data);
         else
           binaryData.append(data, xmlStrlen(data));
         if (m_collector)

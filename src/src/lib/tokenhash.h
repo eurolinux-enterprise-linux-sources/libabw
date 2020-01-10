@@ -46,143 +46,143 @@ struct xmltoken
 class Perfect_Hash
 {
 private:
-  static inline unsigned int hash (const char *str, unsigned int len);
+  static inline unsigned int hash(const char *str, unsigned int len);
 public:
-  static const struct xmltoken *in_word_set (const char *str, unsigned int len);
+  static const struct xmltoken *in_word_set(const char *str, unsigned int len);
 };
 
 inline unsigned int
-Perfect_Hash::hash (register const char *str, register unsigned int len)
+Perfect_Hash::hash(register const char *str, register unsigned int len)
 {
   static const unsigned char asso_values[] =
-    {
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34,  1,  0, 14,
-      27,  3,  5, 21, 23,  0, 34, 34, 26,  8,
-      19, 17,  2, 34,  2,  6, 12, 34, 12, 18,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
-      34, 34, 34, 34, 34, 34
-    };
+  {
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34,  1,  0, 14,
+    27,  3,  5, 21, 23,  0, 34, 34, 26,  8,
+    19, 17,  2, 34,  2,  6, 12, 34, 12, 18,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34, 34, 34, 34, 34,
+    34, 34, 34, 34, 34, 34
+  };
   register int hval = len;
 
   switch (hval)
-    {
-      default:
-        hval += asso_values[(unsigned char)str[1]];
-      /*FALLTHROUGH*/
-      case 1:
-        hval += asso_values[(unsigned char)str[0]];
-        break;
-    }
+  {
+  default:
+    hval += asso_values[(unsigned char)str[1]];
+  /*FALLTHROUGH*/
+  case 1:
+    hval += asso_values[(unsigned char)str[0]];
+    break;
+  }
   return hval;
 }
 
 static const struct xmltoken wordlist[] =
-  {
-    {(char*)0, 0},
+{
+  {(char *)0, 0},
 #line 27 "../../src/lib/tokens.gperf"
-    {"i",XML_I},
+  {"i",XML_I},
 #line 11 "../../src/lib/tokens.gperf"
-    {"a",XML_A},
+  {"a",XML_A},
 #line 35 "../../src/lib/tokens.gperf"
-    {"p",XML_P},
+  {"p",XML_P},
 #line 15 "../../src/lib/tokens.gperf"
-    {"br",XML_BR},
+  {"br",XML_BR},
 #line 37 "../../src/lib/tokens.gperf"
-    {"pbr",XML_PBR},
+  {"pbr",XML_PBR},
 #line 22 "../../src/lib/tokens.gperf"
-    {"f",XML_F},
+  {"f",XML_F},
 #line 39 "../../src/lib/tokens.gperf"
-    {"s",XML_S},
+  {"s",XML_S},
 #line 12 "../../src/lib/tokens.gperf"
-    {"abiword",XML_ABIWORD},
+  {"abiword",XML_ABIWORD},
 #line 33 "../../src/lib/tokens.gperf"
-    {"m",XML_M},
+  {"m",XML_M},
 #line 23 "../../src/lib/tokens.gperf"
-    {"field",XML_FIELD},
+  {"field",XML_FIELD},
 #line 36 "../../src/lib/tokens.gperf"
-    {"pagesize",XML_PAGESIZE},
+  {"pagesize",XML_PAGESIZE},
 #line 25 "../../src/lib/tokens.gperf"
-    {"frame",XML_FRAME},
+  {"frame",XML_FRAME},
 #line 29 "../../src/lib/tokens.gperf"
-    {"image",XML_IMAGE},
+  {"image",XML_IMAGE},
 #line 38 "../../src/lib/tokens.gperf"
-    {"revisions",XML_REVISIONS},
+  {"revisions",XML_REVISIONS},
 #line 16 "../../src/lib/tokens.gperf"
-    {"c",XML_C},
+  {"c",XML_C},
 #line 40 "../../src/lib/tokens.gperf"
-    {"section",XML_SECTION},
+  {"section",XML_SECTION},
 #line 17 "../../src/lib/tokens.gperf"
-    {"cbr",XML_CBR},
+  {"cbr",XML_CBR},
 #line 42 "../../src/lib/tokens.gperf"
-    {"table",XML_TABLE},
+  {"table",XML_TABLE},
 #line 34 "../../src/lib/tokens.gperf"
-    {"metadata",XML_METADATA},
+  {"metadata",XML_METADATA},
 #line 30 "../../src/lib/tokens.gperf"
-    {"iw",XML_IW},
+  {"iw",XML_IW},
 #line 18 "../../src/lib/tokens.gperf"
-    {"cell",XML_CELL},
+  {"cell",XML_CELL},
 #line 43 "../../src/lib/tokens.gperf"
-    {"version",XML_VERSION},
+  {"version",XML_VERSION},
 #line 13 "../../src/lib/tokens.gperf"
-    {"awml",XML_AWML},
+  {"awml",XML_AWML},
 #line 41 "../../src/lib/tokens.gperf"
-    {"styles",XML_STYLES},
+  {"styles",XML_STYLES},
 #line 14 "../../src/lib/tokens.gperf"
-    {"bookmark",XML_BOOKMARK},
+  {"bookmark",XML_BOOKMARK},
 #line 24 "../../src/lib/tokens.gperf"
-    {"foot",XML_FOOT},
+  {"foot",XML_FOOT},
 #line 31 "../../src/lib/tokens.gperf"
-    {"l",XML_L},
+  {"l",XML_L},
 #line 19 "../../src/lib/tokens.gperf"
-    {"d",XML_D},
+  {"d",XML_D},
 #line 21 "../../src/lib/tokens.gperf"
-    {"endnote",XML_ENDNOTE},
+  {"endnote",XML_ENDNOTE},
 #line 26 "../../src/lib/tokens.gperf"
-    {"history",XML_HISTORY},
+  {"history",XML_HISTORY},
 #line 32 "../../src/lib/tokens.gperf"
-    {"lists",XML_LISTS},
+  {"lists",XML_LISTS},
 #line 20 "../../src/lib/tokens.gperf"
-    {"data",XML_DATA},
+  {"data",XML_DATA},
 #line 28 "../../src/lib/tokens.gperf"
-    {"ignoredwords",XML_IGNOREDWORDS}
-  };
+  {"ignoredwords",XML_IGNOREDWORDS}
+};
 
 const struct xmltoken *
-Perfect_Hash::in_word_set (register const char *str, register unsigned int len)
+Perfect_Hash::in_word_set(register const char *str, register unsigned int len)
 {
   if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
+  {
+    register int key = hash(str, len);
+
+    if (key <= MAX_HASH_VALUE && key >= 0)
     {
-      register int key = hash (str, len);
+      register const char *s = wordlist[key].name;
 
-      if (key <= MAX_HASH_VALUE && key >= 0)
-        {
-          register const char *s = wordlist[key].name;
-
-          if (s && *str == *s && !strncmp (str + 1, s + 1, len - 1) && s[len] == '\0')
-            return &wordlist[key];
-        }
+      if (s && *str == *s && !strncmp(str + 1, s + 1, len - 1) && s[len] == '\0')
+        return &wordlist[key];
     }
+  }
   return 0;
 }
 #line 44 "../../src/lib/tokens.gperf"

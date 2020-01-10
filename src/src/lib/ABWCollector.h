@@ -12,7 +12,7 @@
 
 #include <string>
 #include <map>
-#include <libwpd/libwpd.h>
+#include <librevenge/librevenge.h>
 
 namespace libabw
 {
@@ -35,9 +35,11 @@ enum ABWListType
   ABW_UNORDERED
 };
 
+typedef std::map<std::string, std::string> ABWPropertyMap;
+
 bool findInt(const std::string &str, int &res);
 bool findDouble(const std::string &str, double &res, ABWUnit &unit);
-void parsePropString(const std::string &str, std::map<std::string, std::string> &props);
+void parsePropString(const std::string &str, ABWPropertyMap &props);
 
 struct ABWData
 {
@@ -45,12 +47,12 @@ struct ABWData
     : m_mimeType(), m_binaryData() {}
   ABWData(const ABWData &data)
     : m_mimeType(data.m_mimeType), m_binaryData(data.m_binaryData) {}
-  ABWData(const WPXString &mimeType, const WPXBinaryData binaryData)
+  ABWData(const librevenge::RVNGString &mimeType, const librevenge::RVNGBinaryData binaryData)
     : m_mimeType(mimeType), m_binaryData(binaryData) {}
   ~ABWData() {}
 
-  WPXString m_mimeType;
-  WPXBinaryData m_binaryData;
+  librevenge::RVNGString m_mimeType;
+  librevenge::RVNGBinaryData m_binaryData;
 };
 
 struct ABWListElement
@@ -58,7 +60,7 @@ struct ABWListElement
   ABWListElement()
     : m_listLevel(-1), m_minLabelWidth(0.0), m_spaceBefore(0.0), m_parentId() {}
   virtual ~ABWListElement() {}
-  virtual void writeOut(WPXPropertyList &propList) const;
+  virtual void writeOut(librevenge::RVNGPropertyList &propList) const;
   virtual ABWListType getType() const = 0;
 
   int m_listLevel;
@@ -72,15 +74,15 @@ struct ABWOrderedListElement : public ABWListElement
   ABWOrderedListElement()
     : ABWListElement(), m_numFormat(), m_numPrefix(), m_numSuffix(), m_startValue(-1) {}
   ~ABWOrderedListElement() {}
-  void writeOut(WPXPropertyList &propList) const;
+  void writeOut(librevenge::RVNGPropertyList &propList) const;
   ABWListType getType() const
   {
     return ABW_ORDERED;
   }
 
-  WPXString m_numFormat;
-  WPXString m_numPrefix;
-  WPXString m_numSuffix;
+  librevenge::RVNGString m_numFormat;
+  librevenge::RVNGString m_numPrefix;
+  librevenge::RVNGString m_numSuffix;
   int m_startValue;
 };
 
@@ -89,13 +91,13 @@ struct ABWUnorderedListElement : public ABWListElement
   ABWUnorderedListElement()
     : ABWListElement(), m_bulletChar() {}
   ~ABWUnorderedListElement() {}
-  void writeOut(WPXPropertyList &propList) const;
+  void writeOut(librevenge::RVNGPropertyList &propList) const;
   ABWListType getType() const
   {
     return ABW_UNORDERED;
   }
 
-  WPXString m_bulletChar;
+  librevenge::RVNGString m_bulletChar;
 };
 
 class ABWCollector
@@ -107,6 +109,7 @@ public:
   // collector functions
 
   virtual void collectTextStyle(const char *name, const char *basedon, const char *followedby, const char *props) = 0;
+  virtual void collectDocumentProperties(const char *props) = 0;
   virtual void collectParagraphProperties(const char *level, const char *listid, const char *parentid,
                                           const char *style, const char *props) = 0;
   virtual void collectSectionProperties(const char *footer, const char *footerLeft, const char *footerFirst,
@@ -133,13 +136,15 @@ public:
   virtual void collectList(const char *id, const char *listDecimal, const char *listDelim,
                            const char *parentid, const char *startValue, const char *type) = 0;
 
-  virtual void collectData(const char *name, const char *mimeType, const WPXBinaryData &data) = 0;
+  virtual void collectData(const char *name, const char *mimeType, const librevenge::RVNGBinaryData &data) = 0;
   virtual void collectHeaderFooter(const char *id, const char *type) = 0;
 
   virtual void openTable(const char *props) = 0;
   virtual void closeTable() = 0;
   virtual void openCell(const char *props) = 0;
   virtual void closeCell() = 0;
+
+  virtual void addMetadataEntry(const char *name, const char *value) = 0;
 };
 
 } // namespace libabw

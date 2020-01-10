@@ -7,21 +7,22 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#ifndef __ABWXMLHELPER_H__
-#define __ABWXMLHELPER_H__
+#include <cstdarg>
+#include <cstdio>
 
-#include <librevenge-stream/librevenge-stream.h>
-#include <libxml/xmlreader.h>
+#include "libabw_internal.h"
 
 namespace libabw
 {
 
-// create an xmlTextReader pointer from a librevenge::RVNGInputStream pointer
-// needs to be freed using xmlTextReaderFree function.
+void debugPrint(const char *const format, ...)
+{
+  va_list args;
+  va_start(args, format);
+  std::vfprintf(stderr, format, args);
+  va_end(args);
+}
 
-xmlTextReaderPtr xmlReaderForStream(librevenge::RVNGInputStream *input);
+}
 
-} // namespace libabw
-
-#endif // __ABWXMLHELPER_H__
 /* vim:set shiftwidth=2 softtabstop=2 expandtab: */

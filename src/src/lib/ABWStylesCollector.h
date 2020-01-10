@@ -11,7 +11,7 @@
 #define __ABWSTYLESCOLLECTOR_H__
 
 #include <stack>
-#include <libwpd/libwpd.h>
+#include <librevenge/librevenge.h>
 #include "ABWCollector.h"
 
 namespace libabw
@@ -23,7 +23,7 @@ struct ABWStylesTableState
   ABWStylesTableState(const ABWStylesTableState &ts);
   ~ABWStylesTableState();
 
-  std::map<std::string, std::string> m_currentCellProperties;
+  ABWPropertyMap m_currentCellProperties;
 
   int m_currentTableWidth;
   int m_currentTableRow;
@@ -50,6 +50,7 @@ public:
   // collector functions
 
   void collectTextStyle(const char *, const char *, const char *, const char *) {}
+  void collectDocumentProperties(const char *) {}
   void collectParagraphProperties(const char *level, const char *listid, const char *parentid,
                                   const char *style, const char *props);
   void collectSectionProperties(const char *, const char *, const char *, const char *,
@@ -74,7 +75,7 @@ public:
   void insertText(const char *) {}
   void insertImage(const char *, const char *) {}
 
-  void collectData(const char *name, const char *mimeType, const WPXBinaryData &data);
+  void collectData(const char *name, const char *mimeType, const librevenge::RVNGBinaryData &data);
   void collectHeaderFooter(const char *, const char *) {}
   void collectList(const char *id, const char *listDecimal, const char *listDelim,
                    const char *parentid, const char *startValue, const char *type);
@@ -83,6 +84,8 @@ public:
   void closeTable();
   void openCell(const char *props);
   void closeCell();
+
+  void addMetadataEntry(const char *, const char *) {}
 
 private:
   ABWStylesCollector(const ABWStylesCollector &);

@@ -1,28 +1,29 @@
-%global apiversion 0.0
+%global apiversion 0.1
 
 Name: libabw
-Version: 0.0.2
-Release: 1%{?dist}
+Version: 0.1.1
+Release: 2%{?dist}
 Summary: A library for import of AbiWord files
 
-Group: System Environment/Libraries
 License: MPLv2.0
-URL: http://wiki.documentfoundation.org/DLP/Libraries/libabw
+URL: https://wiki.documentfoundation.org/DLP/Libraries/libabw
 Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires: boost-devel
 BuildRequires: doxygen
 BuildRequires: gperf
 BuildRequires: help2man
-BuildRequires: libwpd-devel
-BuildRequires: libxml2-devel
+BuildRequires: pkgconfig(librevenge-0.0)
+BuildRequires: pkgconfig(libxml-2.0)
+
+Patch0: 0001-coverity-1259904-dereference-before-null-check.patch
+Patch1: 0001-coverity-1259905-do-not-let-AbiDocument-parse-throw.patch
 
 %description
 %{name} is a library for import of AbiWord files.
 
 %package devel
 Summary: Development files for %{name}
-Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
@@ -31,7 +32,6 @@ developing applications that use %{name}.
 
 %package doc
 Summary: Documentation of %{name} API
-Group: Documentation
 BuildArch: noarch
 
 %description doc
@@ -39,7 +39,6 @@ The %{name}-doc package contains documentation files for %{name}.
 
 %package tools
 Summary: Tools to transform AbiWord files into other formats
-Group: Applications/Publishing
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description tools
@@ -47,7 +46,7 @@ Tools to transform AbiWord files into other formats. Currently
 supported: XHTML, raw, text.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-silent-rules --disable-static --disable-werror
@@ -98,6 +97,12 @@ install -m 0644 abw2*.1 %{buildroot}/%{_mandir}/man1
 %{_mandir}/man1/abw2html.1*
 
 %changelog
+* Mon May 04 2015 David Tardon <dtardon@redhat.com> - 0.1.1-2
+- Related: rhbz#1207749 fix two potential crashes
+
+* Fri Apr 17 2015 David Tardon <dtardon@redhat.com> - 0.1.1-1
+- Resolves: rhbz#1207749 rebase to 0.1.1
+
 * Mon Feb 10 2014 David Tardon <dtardon@redhat.com> - 0.0.2-1
 - new upstream release 0.0.2
 - generate man pages for the tools

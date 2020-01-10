@@ -6,8 +6,8 @@ AC_PREREQ([2.65])
 # Version informations
 # ====================
 m4_define([libabw_version_major],[0])
-m4_define([libabw_version_minor],[0])
-m4_define([libabw_version_micro],[2])
+m4_define([libabw_version_minor],[1])
+m4_define([libabw_version_micro],[1])
 m4_define([libabw_version],[libabw_version_major.libabw_version_minor.libabw_version_micro])
 
 # =============
@@ -82,6 +82,25 @@ AS_CASE([$host],
 )
 AC_MSG_RESULT([$platform_win32])
 AM_CONDITIONAL([PLATFORM_WIN32], [test "x$platform_win32" = "xyes"])
+
+AS_IF([test $platform_win32 == yes],
+    [],
+    [
+        AC_MSG_CHECKING([for -fvisibility=hidden compiler flag])
+        saved_CXXFLAGS="$CXXFLAGS"
+        CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
+        AC_TRY_COMPILE([], [],
+            [
+                AC_MSG_RESULT([yes])
+                CXXFLAGS="$CXXFLAGS -DLIBABW_VISIBILITY"
+            ],
+            [
+                AC_MSG_RESULT([no])
+                CXXFLAGS="$saved_CXXFLAGS"
+            ]
+        )
+    ]
+)
 
 # =========================
 # Platform check for darwin
@@ -218,13 +237,13 @@ fi
 AC_SUBST(GPERF)
 
 # ===============
-# Find libwpd
+# Find librevenge
 # ===============
-PKG_CHECK_MODULES([WPD],[
-	libwpd-0.9
+PKG_CHECK_MODULES([REVENGE],[
+	librevenge-0.0
 ])
-AC_SUBST([WPD_CFLAGS])
-AC_SUBST([WPD_LIBS])
+AC_SUBST([REVENGE_CFLAGS])
+AC_SUBST([REVENGE_LIBS])
 
 # ============
 # Find libxml2
@@ -252,10 +271,8 @@ AC_SUBST(ZLIB_LIBS)
 # ==================
 AC_CHECK_HEADERS(
 	boost/algorithm/string.hpp \
-	boost/archive/iterators/binary_from_base64.hpp \
-	boost/archive/iterators/remove_whitespace.hpp \
-	boost/archive/iterators/transform_width.hpp \
-	boost/range/iterator_range.hpp \
+	boost/optional.hpp \
+	boost/scoped_ptr.hpp \
 	boost/spirit/include/classic.hpp,
 	[],
 	[AC_MSG_ERROR([Required boost headers not found.])],
@@ -271,12 +288,17 @@ AC_ARG_ENABLE([tools],
 	[enable_tools=yes]
 )
 AS_IF([test "x$enable_tools" = "xyes"], [
-	PKG_CHECK_MODULES([WPD_STREAM],[
-		libwpd-stream-0.9
+	PKG_CHECK_MODULES([REVENGE_GENERATORS],[
+		librevenge-generators-0.0
+	])
+	PKG_CHECK_MODULES([REVENGE_STREAM],[
+		librevenge-stream-0.0
 	])
 ])
-AC_SUBST([WPD_STREAM_CFLAGS])
-AC_SUBST([WPD_STREAM_LIBS])
+AC_SUBST([REVENGE_GENERATORS_CFLAGS])
+AC_SUBST([REVENGE_GENERATORS_LIBS])
+AC_SUBST([REVENGE_STREAM_CFLAGS])
+AC_SUBST([REVENGE_STREAM_LIBS])
 AM_CONDITIONAL(BUILD_TOOLS, [test "x$enable_tools" = "xyes"])
 
 # =====================

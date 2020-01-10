@@ -1,10 +1,126 @@
-2014-02-10  David Tardon  <dtardon@redhat.com>  [47057a7fdce703813f41223d908237a180b75b57]
+2014-12-20  David Tardon  <dtardon@redhat.com>  [0822e285c7acda1e4457aa9a60e9d69dafce9f80]
+
+	prepare for a release
+
+	Change-Id: I7c65bc7736fb18ae1ee0be8cb059c942bda52389
+
+2014-12-20  David Tardon  <dtardon@redhat.com>  [52821af0b9dcd4f0856f2952e54bc64e0d9342a5]
+
+	fix copypasta
+
+	Change-Id: I53bbd861af92e833f20333fc6db690b482bc313c
+
+2014-12-20  David Tardon  <dtardon@redhat.com>  [12bf83bf39fb11151c14c2615806eb9fa2c46c02]
+
+	fix processing of mixed paragraph content
+
+	I would much prefer to do this in the parser, but calling closeSpan()
+	unconditionally just seems wrong and I do not want to introduce a new
+	function to ABWCollector just to be able to check if a span is opened.
+
+	Change-Id: Icf6950a5bbc8d401f5773270d23a45ddf2e41dcc
+
+2014-12-20  David Tardon  <dtardon@redhat.com>  [1f4ef02f77320dfd4de3db6c635c4f9935cd3fa8]
+
+	fix condition
+
+	Change-Id: I359a44e56ffecaa6d01b561a312cea9b3c1a4575
+
+2014-12-20  David Tardon  <dtardon@redhat.com>  [6f8f69d5e5d2511f21dc6014628f4abb6087a9ad]
+
+	print debug messages to stderr
+
+	Change-Id: Ic70e939cfe68a81165418482c2dc9e07473ef0b7
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [4712f04685caf87c48d448ff14ad0a6341cc1e62]
+
+	import headings
+
+	Change-Id: I49e1ce400fe1b3162170f357400a98cba182fd66
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [eb2aab1972a7239488ddc86ce1c73c1124ab68ba]
+
+	document props are global
+
+	Change-Id: I4c4c2d56fcd4c616336d37e0826430e132887151
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [8f0d36795e809d47113e20eac718b29675801614]
+
+	import metadata
+
+	Change-Id: I03f210616f7d2a9d5e24220b95a0334e63760a5a
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [78ac2ee4cebbc7755cfda36851af9a9e0f9bbc96]
+
+	set writing mode from document default
+
+	Change-Id: Ia04d00310cb73d6af6bb19cb21c4ec52011d5969
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [92e48a98cb470e8dc76c6873bc30198a36f81d77]
+
+	eliminate some copypasta
+
+	Change-Id: I295b98876b19d514d114d115ef8ce8e7ce00d6d1
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [b2290b8a30bd9e12bb4d8ab2079a25e8011d1258]
+
+	use typedef for property map
+
+	Change-Id: Ia29e9fa6084696105783fa09f92738f2c5349496
+
+2014-12-19  David Tardon  <dtardon@redhat.com>  [93baf6994778311b3ffd8afd2e98dfa15389e737]
+
+	add support for text language
+
+	Change-Id: I4e184195c3e54d54a6627aec110fc63d250fb211
+
+2014-11-24  David Tardon  <dtardon@redhat.com>  [acafe5bf1dc491edab3980a7bb3a91f05fd48e03]
+
+	add compile script to .gitignore
+
+	Change-Id: I0fbd5cfb63031b89c48dee9f1634c3422ef0cd33
+
+2014-11-24  David Tardon  <dtardon@redhat.com>  [d80d7c7730a4599613552e69ac65e9ec76525fcb]
+
+	only export public symbols
+
+
+2014-06-16  Michael Stahl  <mstahl@redhat.com>  [cba9f861292cd3e1a3c2e5baaccf8f87a42cfc34]
+
+	libabw: avoid some quoting issue with Win32 make
+
+
+2014-05-23  David Tardon  <dtardon@redhat.com>  [3c0b37ba5d225ea71f42c3179f4438b12ec5abcb]
 
 	prepare for a new release
 
-	Change-Id: I387df9a26538bf37248cb2f8a1a1c083e9628b1d
+	Change-Id: I34cbd95ad975afdfc8892c38ebe06c90030b37fb
 
-2014-02-07  David Tardon  <dtardon@redhat.com>  [b4c2bd396d73204a46cf084bc444d254949920ae]
+2014-05-23  David Tardon  <dtardon@redhat.com>  [51e28e34f0bfb5e4a0eff2e444add3f62b796a23]
+
+	put the newest version on top
+
+	Change-Id: Icb44c9efd0246b4c17334b357c1454bd60a53dc5
+
+2014-04-16  David Tardon  <dtardon@redhat.com>  [f43bb981cab1df2daa5823a3d7d53c54170cca92]
+
+	add other used projects to .pc file
+
+	Change-Id: I7dfe0a26b53857b9ac7625ff973540bc3eeaf08a
+
+2014-04-16  David Tardon  <dtardon@redhat.com>  [2d459731222782fcfc0833698c4acc74ba2cf597]
+
+	require librevenge-stream too
+
+	Change-Id: I2bc0ebad7e4734a6fc42a7d0fae9755d07f77600
+
+2014-02-10  David Tardon  <dtardon@redhat.com>  [0bcf974769248d8e7b5b35733d2c655653585903]
+
+	drop stray files
+
+	Change-Id: I45260ebcee40ce2b12196bf95dda573b1ce38a49
+
+2014-01-29  David Tardon  <dtardon@redhat.com>  [f16e6cf59bdc681d410cd356e4eff89abd98e372]
 
 	CID#1165311 missing break
 
@@ -12,155 +128,165 @@
 	anyway.
 
 	Change-Id: I390a4f67c907d75c554673f976b952e1008c94ae
-	(cherry picked from commit f16e6cf59bdc681d410cd356e4eff89abd98e372)
 
-2014-02-07  David Tardon  <dtardon@redhat.com>  [ed285b772d124ef9a900f9fd9f53a9b72fdb34de]
+2014-01-29  David Tardon  <dtardon@redhat.com>  [f3723f79a20de230b3159b8d73debb567bb520f4]
 
 	add myself to contributors
 
 	Change-Id: I8fea4c66e58690ef808b8ae48bcb1e3186deb07d
-	(cherry picked from commit f3723f79a20de230b3159b8d73debb567bb520f4)
 
-2014-01-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d6fcd4af658079dd6399559a0603b9c356b61197]
+2014-01-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1b941a8b1e2aa1909c1f6a0d2c8aeeb04f8ec4b2]
 
 	Ignore cells if not inside the <table></table> tags
 
 	Change-Id: I5dfc2d05a6191f9cbf97d300a9ca1624b40e21e9
-	(cherry picked from commit 1b941a8b1e2aa1909c1f6a0d2c8aeeb04f8ec4b2)
 
-2014-01-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1d98978ccd026b4e2372faf3a373682a1a96605b]
+2014-01-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [393f2b5bb8bbb802526771baf1087725cf920452]
 
 	std::string constructor with null string might crash in some cases
 
 	Change-Id: Ie692ffbece7235fe32abf46e84d4f2a29442e96f
-	(cherry picked from commit 393f2b5bb8bbb802526771baf1087725cf920452)
 
-2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [095b595a81cc18f3f16960c202079d2e961d1634]
+2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [bd1b2b63526efecc3d57c12a801b14dae7a3f47a]
 
 	Put as much as you can into the try block
 
+	(cherry picked from commit 095b595a81cc18f3f16960c202079d2e961d1634)
+
+	Conflicts:
+		src/lib/AbiDocument.cpp
+
 	Change-Id: Id9c4193228bc7af7da685edb0db07c91f6c8de24
 
-2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e68f8f29ec365cc07edf6f1b1dc15c7f75f40051]
+2014-01-17  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0c16f59fe7a3aed7cc055a81facbbc1fb35998d7]
 
 	All invocation of xmlReaderForStream use the same options
 
+	(cherry picked from commit e68f8f29ec365cc07edf6f1b1dc15c7f75f40051)
+
+	Conflicts:
+		src/lib/ABWXMLHelper.cpp
+		src/lib/ABWXMLHelper.h
+		src/lib/AbiDocument.cpp
+
 	Change-Id: I6f61c92db22114e3592cd5d24516bcd879422566
 
-2014-01-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2b21394e42767ece602741538e485c2ec3cb5c85]
+2014-01-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [720f251278f53d3066670eef60eb2611aa95bbbc]
 
 	No need to use the stuff from inttypes here
 
+	(cherry picked from commit 2b21394e42767ece602741538e485c2ec3cb5c85)
+
+	Conflicts:
+		src/lib/ABWStylesCollector.cpp
+
 	Change-Id: Ia8087ed0b18c8ed12ec75d272bf8f409038f33b0
 
-2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [54c72c4e27dc26bb74473f2fccaa5dcf9dba01d7]
+2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [87e73a202a1ea96fbf361f32e71ad8efc42367d0]
 
 	Strip first tab in a list text
 
 	Change-Id: I46a4d0f36b2d255a30c669f24dabe65852c35d61
 
-2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b0a20439bd67fae0fb1aeb71909e7c48f4ab6979]
-
-	Bump version
-
-	Change-Id: I10e27439fc33587a16411bb29fe268ed9ca60de8
-
-2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9817ef41ad922387d56a0a8c5abb862977f33dea]
+2014-01-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [902454110899751868ba9ab56f0ef554f8239eb5]
 
 	Some NEWS
 
 	Change-Id: I47e4a37628da83d467bbe757efe6f336b30cbe32
+	(cherry picked from commit 9817ef41ad922387d56a0a8c5abb862977f33dea)
 
-2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [87ebca42ee32d9953af77d939cbbf527d885ce82]
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b643e3b093e21f99257b147ea40089b9dd5aa809]
 
 	Some Fridrich less
 
+	(cherry picked from commit 87ebca42ee32d9953af77d939cbbf527d885ce82)
+
+	Conflicts:
+		src/lib/ABWZlibStream.cpp
+
 	Change-Id: Ic1b972d90b0d4fb76aa294190eaa1014d68b17ca
 
-2014-01-14  David Tardon  <dtardon@redhat.com>  [48be70f4563514fbdae1880cff1eec6345a9a9dd]
+2014-01-14  David Tardon  <dtardon@redhat.com>  [387f0c76bfa22db281145bdaef735500d1645e1b]
 
 	add git-review setup
 
 	Change-Id: Ifcf4a5e6868d9572397bbf7b6a16899e200cd617
-	(cherry picked from commit 387f0c76bfa22db281145bdaef735500d1645e1b)
 
-2014-01-14  David Tardon  <dtardon@redhat.com>  [2341d1d9dbdd230523f7885baeb0c5e85bfd41ea]
+2014-01-14  David Tardon  <dtardon@redhat.com>  [c6e64450e877c8594ad443e8e4ea303be57a205a]
 
 	set git hooks automatically
 
 
-2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d04605a6e7c9179686714bb3d9f5178f90584166]
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [57e1ee75d48303cb05e2060fd719b49163d5db5c]
 
 	Support also compressed zabw documents
 
+	(cherry picked from commit d04605a6e7c9179686714bb3d9f5178f90584166)
 
-2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [cbb494786a057a01756f57086043500a0eee4643]
+	Conflicts:
+		src/lib/AbiDocument.cpp
+		src/lib/Makefile.am
 
-	libwpd:mime-type -> libwpd:mimetype
-
-
-2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e1f26cd3d85b78d008004f7cf4f08e564d0c5d3e]
+2014-01-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [96888911318a3923b22e707989de9ad4ad690e27]
 
 	The left position of the list is already factored into the open*ListLevel
 
 
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d2147985f4e1eb13e6b52a33511c9154632a4b38]
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [964e40650dfb714f9c628b89e2f390b287a4e9c6]
 
 	Fix a silly with footnotes and endnotes
 
-	(cherry picked from commit 964e40650dfb714f9c628b89e2f390b287a4e9c6)
 
-	Conflicts:
-		src/lib/ABWParser.cpp
-
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ce6c5a536ae05b855fee08dc8213d586a852f6cd]
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [184a12501019486285ad71b57b9d07b22e706474]
 
 	Make LO build easier
 
+	Conflicts:
+		src/lib/Makefile.am
 
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a70b8584d2fea1d6e309ef7e4f6711cb217b7388]
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a773a802c2b66e6cda8a44be59ad147daa495821]
 
 	It seems that AbiWord gets the real number of columns in the table this way
 
 
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c0437e7a7d6d3e1118158cbece01c12dfe2ed023]
-
-	libwpd:occurence was misspelled in libwpd-0.9
-
-
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [357cf9d824e91ec2d4a8b23928720f1ca8ae00eb]
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [717a03f9bbbfa6c3ad6bd6a42be266e5c9f2d61b]
 
 	Write dummy list levels when a list starts with level bigger then 1
 
 
-2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [b7ee83b98d13bef7bf8ed75412d551db4d96b7e0]
+2014-01-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1ed58902ba50c922c321a74699a8c78ff0a51379]
 
 	More robust list handling
 
 
-2014-01-12  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ffdf5c6aa4071bf1a39e2d2ad41a33a53370853a]
+2014-01-12  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6073137e510ee7826587c5a930017af8908cec22]
 
 	Fix handling of para margin-bottom
 
 
-2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e1f6c44898b49f24226c3f71fb63b5b921cf2cbd]
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2e42ba4ec932441adf5877f04259df1a6f5c3c31]
 
-	Belts and braces (more elegant solution)
-
-
-2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0ee61eb05c8500cf1ff31470d54265427275b441]
-
-	Fix some crash + make the base64 decoding a bit more sane
+	Belts and braces
 
 
-2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f5074918f70bbee286863e9b867f9fa6184cf3fc]
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [56cd4ff5f418b31496ad88fd9487c0670dc2144b]
+
+	Ouch, master back to librevenge
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8d39594681432c632af08d7c77b8c71e9ca40da4]
 
 	Fixing the libwpd-0.9 logic of lists
 
 
-2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [68bd57982af38ad1beab0f074201c21b7b1cf68b]
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e5a561c226967ee07ac95ed7706b3716477f8627]
 
 	Port back to libwpd-0.9
+
+
+2014-01-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3cf58fd0b328f15006363c2b7e171420d976830e]
+
+	Trying to put master on 0.1.0
 
 
 2014-01-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [2c081e895cb4b62e8f2c658f2b20d66adc0ed382]

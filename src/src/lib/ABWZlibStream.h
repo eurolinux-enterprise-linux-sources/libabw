@@ -11,33 +11,51 @@
 #define __ABWZLIBSTREAM_H__
 
 #include <vector>
-#include <libwpd-stream/libwpd-stream.h>
+#include <librevenge-stream/librevenge-stream.h>
 
 namespace libabw
 {
 
-class ABWZlibStream : public WPXInputStream
+class ABWZlibStream : public librevenge::RVNGInputStream
 {
 public:
-  ABWZlibStream(WPXInputStream *input);
+  ABWZlibStream(librevenge::RVNGInputStream *input);
   ~ABWZlibStream() {}
 
-  bool isOLEStream()
+  bool isStructured()
   {
     return false;
   }
-  WPXInputStream *getDocumentOLEStream(const char *)
+  unsigned subStreamCount()
   {
     return 0;
   }
-
+  const char *subStreamName(unsigned)
+  {
+    return 0;
+  }
+  bool existsSubStream(const char *)
+  {
+    return false;
+  }
+  librevenge::RVNGInputStream *getSubStreamByName(const char *)
+  {
+    return 0;
+  }
+  librevenge::RVNGInputStream *getSubStreamById(unsigned)
+  {
+    return 0;
+  }
   const unsigned char *read(unsigned long numBytes, unsigned long &numBytesRead);
-  int seek(long offset, WPX_SEEK_TYPE seekType);
+  int seek(long offset, librevenge::RVNG_SEEK_TYPE seekType);
   long tell();
-  bool atEOS();
-
+  bool isEnd();
+  unsigned long getSize() const
+  {
+    return m_buffer.size();
+  }
 private:
-  WPXInputStream *m_input;
+  librevenge::RVNGInputStream *m_input;
   volatile long m_offset;
   std::vector<unsigned char> m_buffer;
   ABWZlibStream(const ABWZlibStream &);

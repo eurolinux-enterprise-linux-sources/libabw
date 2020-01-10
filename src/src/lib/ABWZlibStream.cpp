@@ -20,7 +20,7 @@ namespace libabw
 namespace
 {
 
-static bool getInflatedBuffer(WPXInputStream *input, std::vector<unsigned char> &buffer)
+static bool getInflatedBuffer(librevenge::RVNGInputStream *input, std::vector<unsigned char> &buffer)
 {
   int ret;
   z_stream strm;
@@ -68,7 +68,7 @@ static bool getInflatedBuffer(WPXInputStream *input, std::vector<unsigned char> 
   while (Z_STREAM_END != ret);
 
   (void)inflateEnd(&strm);
-  input->seek(0, WPX_SEEK_SET);
+  input->seek(0, librevenge::RVNG_SEEK_SET);
   if (Z_STREAM_END == ret)
     return true;
   return false;
@@ -76,8 +76,8 @@ static bool getInflatedBuffer(WPXInputStream *input, std::vector<unsigned char> 
 
 }
 
-ABWZlibStream::ABWZlibStream(WPXInputStream *input) :
-  WPXInputStream(),
+ABWZlibStream::ABWZlibStream(librevenge::RVNGInputStream *input) :
+  librevenge::RVNGInputStream(),
   m_input(0),
   m_offset(0),
   m_buffer()
@@ -86,7 +86,7 @@ ABWZlibStream::ABWZlibStream(WPXInputStream *input) :
   {
     if (input)
     {
-      input->seek(0, WPX_SEEK_CUR);
+      input->seek(0, librevenge::RVNG_SEEK_CUR);
       m_input = input;
     }
     else
@@ -122,14 +122,14 @@ const unsigned char *ABWZlibStream::read(unsigned long numBytes, unsigned long &
   return &m_buffer[oldOffset];
 }
 
-int ABWZlibStream::seek(long offset, WPX_SEEK_TYPE seekType)
+int ABWZlibStream::seek(long offset, librevenge::RVNG_SEEK_TYPE seekType)
 {
   if (m_input)
     return m_input->seek(offset, seekType);
 
-  if (seekType == WPX_SEEK_CUR)
+  if (seekType == librevenge::RVNG_SEEK_CUR)
     m_offset += offset;
-  else if (seekType == WPX_SEEK_SET)
+  else if (seekType == librevenge::RVNG_SEEK_SET)
     m_offset = offset;
 
   if (m_offset < 0)
@@ -154,10 +154,10 @@ long ABWZlibStream::tell()
   return m_offset;
 }
 
-bool ABWZlibStream::atEOS()
+bool ABWZlibStream::isEnd()
 {
   if (m_input)
-    return m_input->atEOS();
+    return m_input->isEnd();
 
   if ((long)m_offset >= (long)m_buffer.size())
     return true;
